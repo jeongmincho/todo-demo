@@ -1,15 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.png";
+import "./App.css";
+import TodoItem from "./TodoItem";
+import TodoInput from "./TodoInput";
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       newItem: "",
       list: []
-    }
+    };
+    this.deleteItem = this.deleteItem.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.updateInput = this.updateInput.bind(this);
   }
 
   /* this is Add item function */
@@ -23,63 +27,42 @@ class App extends React.Component {
       const list = [...this.state.list];
       list.push(newItem);
 
-      this.setState({ // update state
+      this.setState({
         list: list,
         newItem: ""
       });
     }
   }
 
-  /* This is Delete Item function*/
   deleteItem(id) {
-    const list = [...this.state.list];  // append to list
-    const updated_list = list.filter(item => item.id !== id); // remove item which match with id
+    const updated_list = this.state.list.filter(item => item.id !== id);
     this.setState({
       list: updated_list
-    })
+    });
   }
 
-  // this function used to get new item  
   updateInput(input) {
     this.setState({ newItem: input });
   }
 
-  // Render complete html code
   render() {
     return (
       <div>
-        <img src={logo} width="200" height="200" alt="logo" className="logo" />
-        <h1 className="app-title">Akash Senta Todo App</h1>
+        <img src={logo} width="800" height="200" alt="logo" className="logo" />
         <div className="container">
-          Add an Item...
-          <br></br>
-
-          <input type="text"
-            className="input-text"
-            placeholder="Write a todo"
-            value={this.state.newItem}
-            onChange={e => this.updateInput(e.target.value)} />
-
-          <button className="add-btn"
-            onClick={() => this.addItem(this.state.newItem)}
-            disabled={!this.state.newItem.length}>Add Todo</button>
-
+          <TodoInput
+            newItem={this.state.newItem}
+            updateInput={this.updateInput}
+            addItem={this.addItem}
+          ></TodoInput>
           <div className="list">
-
             <ul>
               {this.state.list.map(item => {
                 return (
-                  <li key={item.id}>
-                    <input type="checkbox"
-                      checked={item.isDone}
-                      onChange={() => { }} />
-                    {item.value}
-                    <button className="btn" onClick={() => this.deleteItem(item.id)}>Delete</button>
-                  </li>
+                  <TodoItem item={item} deleteItem={this.deleteItem}></TodoItem>
                 );
               })}
             </ul>
-
           </div>
         </div>
       </div>

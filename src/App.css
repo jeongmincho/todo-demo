@@ -2,8 +2,8 @@
 
 /*see styles.css at root of project for global css*/
 
-body{
-  background: #000;
+body {
+  background: #FFFFFF;
 }
 
 .logo {
@@ -12,26 +12,58 @@ body{
   margin-right: auto;
 }
 
+.input-container {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #c6c6c6;
+  border-radius: 1rem;
+}
+
 .input-text {
   display: inline;
+  font-size: 2rem;
   margin: 0;
+  margin-left: 1rem;
   border: none;
   border-radius: 0.4rem;
   padding: 10px;
 }
 
+.checkbox {
+  margin: 1rem;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 5rem;
+  margin: 1rem 0;
+}
+
+.todo-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .list ul li button {
-  position: absolute;
-  right: 0%;
   background: #f34541;
-  color: #fff !important;
+  color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px;
+  padding: .5rem;
   border-radius: 0.4rem;
-  display: inline-block;
   border: none;
 }
 
@@ -39,12 +71,11 @@ body{
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #7313cb;
-  margin: 20px;
+  background: #29a5ff;
   padding: 10px;
   border-radius: 0.4rem;
-  display: inline-block;
   border: none;
+  margin: 1rem
 }
 
 .app-title {
@@ -52,14 +83,15 @@ body{
   color: #c1c1c1;
   font-size: 70px;
 }
+
 ul {
   /* remove default padding and margin from ul*/
   margin: 0px;
   padding: 0px;
 }
+
 .list ul li {
-  display: block;
-  width: 100%;
+  width: 25rem;
   text-decoration: none;
   color: #000000;
   background-color: #ffffff;
@@ -73,6 +105,9 @@ ul {
 
 .container {
   color: #fff;
-  max-width: 500px;
+  max-width: 50rem;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center
 }
